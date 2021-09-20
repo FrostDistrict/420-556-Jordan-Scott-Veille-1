@@ -3,6 +3,7 @@ package com.scott.reserved.model;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -18,6 +19,9 @@ public class Restaurant extends BaseEntity {
     private String phone1;
 
     private String phone2;
+
+    @Email
+    private String email;
 
     private int capacity;
 

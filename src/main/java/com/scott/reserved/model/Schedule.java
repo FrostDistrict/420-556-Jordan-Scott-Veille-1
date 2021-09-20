@@ -1,19 +1,24 @@
 package com.scott.reserved.model;
 
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
-@Document(collection = "schedules")
-public class Schedule extends BaseEntity {
-    List<Day> days = new ArrayList<>(7);
+public class Schedule {
+    Map<String, Day> days = new HashMap<>();
+
 }
 
+@Data
 class Day{
     LocalTime opening;
     LocalTime closing;
+
+    public Day(LocalTime opening, LocalTime closing) {
+        this.opening = opening;
+        this.closing = closing;
+    }
 }
