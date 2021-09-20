@@ -1,13 +1,13 @@
 package com.scott.reserved;
 
-import com.scott.reserved.model.Restaurant;
+import com.scott.reserved.model.BaseEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@EnableMongoRepositories(basePackageClasses = Restaurant.class)
+@EnableMongoRepositories(basePackageClasses = BaseEntity.class)
 @ComponentScan(value = "com.scott.reserved.*")
 public class ReservedApplication {
 

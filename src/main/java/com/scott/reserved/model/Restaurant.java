@@ -1,29 +1,27 @@
 package com.scott.reserved.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalTime;
+import javax.validation.constraints.Size;
+import java.util.List;
 
 @Data
 @Document(collection = "restaurants")
-public class Restaurant {
+public class Restaurant extends BaseEntity {
+    @Size(min = 3, max = 70)
+    private String name;
 
-    @Id
-    private String id;
+    @Size(min = 3, max = 250)
+    private String description;
 
-    private String nom;
+    private String phone1;
 
-    private String adress;
+    private String phone2;
 
-    private String telephone;
+    private int capacity;
 
-    private int capacite_max;
+    private List<Location> locations;
 
-    private LocalTime ouverture;
-
-    private LocalTime fermeture;
-
-
+    private Schedule schedule;
 }
