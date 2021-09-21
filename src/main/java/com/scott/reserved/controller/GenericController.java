@@ -82,7 +82,7 @@ public class GenericController<T extends BaseEntity, K extends String> {
         if (crudService.deleteByID(id)) {
             return ResponseEntity.ok(new ResponseMessage("Delete successful"));
         }
-        
+
         return ResponseEntity
                 .notFound()
                 .build();
