@@ -1,6 +1,6 @@
 package com.scott.reserved.controller;
 
-import com.scott.reserved.ResponseMessage;
+import com.scott.reserved.dto.ResponseMessage;
 import com.scott.reserved.model.BaseEntity;
 import com.scott.reserved.service.CrudService;
 import org.springframework.http.ResponseEntity;
