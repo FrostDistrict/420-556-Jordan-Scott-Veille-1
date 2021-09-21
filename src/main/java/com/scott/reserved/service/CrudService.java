@@ -2,7 +2,6 @@ package com.scott.reserved.service;
 
 import com.scott.reserved.model.BaseEntity;
 import com.scott.reserved.repository.BaseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ValidationException;
 import java.util.List;
@@ -10,10 +9,9 @@ import java.util.Optional;
 
 public class CrudService<T extends BaseEntity, K extends String> {
 
-    private BaseRepository<T, String>   baseRepository;
+    private BaseRepository<T, K> baseRepository;
 
-    @Autowired
-    public void setBaseRepository(BaseRepository<T, String> baseRepository) {
+    public void setBaseRepository(BaseRepository<T, K> baseRepository) {
         this.baseRepository = baseRepository;
     }
 
@@ -24,9 +22,9 @@ public class CrudService<T extends BaseEntity, K extends String> {
         return Optional.empty();
     }
 
-    public Optional<T> getOneByID(String ID) {
-        if (ID != null && baseRepository.existsById(ID)) {
-            return baseRepository.findById(ID);
+    public Optional<T> getOneByID(K k) {
+        if (k != null && baseRepository.existsById(k)) {
+            return baseRepository.findById(k);
         }
         return Optional.empty();
     }
@@ -35,17 +33,17 @@ public class CrudService<T extends BaseEntity, K extends String> {
         return baseRepository.findAll();
     }
 
-    public Optional<T> update(T t, String ID) throws ValidationException {
-        if (ID != null && baseRepository.existsById(ID) && t != null) {
-            t.setId(ID);
+    public Optional<T> update(T t, K k) throws ValidationException {
+        if (k != null && baseRepository.existsById(k) && t != null) {
+            t.setId(k);
             return Optional.of(baseRepository.save(t));
         }
         return Optional.empty();
     }
 
-    public boolean deleteByID(String ID) {
-        if (ID != null && baseRepository.existsById(ID)) {
-            baseRepository.deleteById(ID);
+    public boolean deleteByID(K k) {
+        if (k != null && baseRepository.existsById(k)) {
+            baseRepository.deleteById(k);
             return true;
         }
         return false;

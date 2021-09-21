@@ -1,24 +1,20 @@
-package com.scott.reserved;
+package com.scott.reserved.service;
 
 import com.scott.reserved.model.Restaurant;
-import com.scott.reserved.service.ClientService;
-import com.scott.reserved.service.RestaurantService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 
-@SpringBootTest
-class ReservedApplicationTests {
+@DataMongoTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class RestaurantServiceTest {
 
     @Autowired
     ClientService clientService;
 
     @Autowired
     RestaurantService restaurantService;
-
-    @Test
-    void contextLoads() {
-    }
 
     @Test
     void test() {
@@ -30,5 +26,4 @@ class ReservedApplicationTests {
         System.out.println(potato);
         System.out.println(potato.getId());
     }
-
 }
