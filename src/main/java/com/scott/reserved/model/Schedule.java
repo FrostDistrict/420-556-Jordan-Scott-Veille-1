@@ -1,24 +1,37 @@
 package com.scott.reserved.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-@Data
+@ToString
 public class Schedule {
     Map<String, Day> days = new HashMap<>();
 
-}
+    public void setOpeningClosingTimes(String dayOfWeek, LocalTime opening, LocalTime closing) {
+        days.put(dayOfWeek, new Day(opening, closing));
+    }
 
-@Data
-class Day{
-    LocalTime opening;
-    LocalTime closing;
+    public Day getDay(String day) {
+        return days.get(day);
+    }
 
-    public Day(LocalTime opening, LocalTime closing) {
-        this.opening = opening;
-        this.closing = closing;
+    @ToString
+    @Data
+    static class Day{
+        LocalTime opening;
+        LocalTime closing;
+
+        public Day(LocalTime opening, LocalTime closing) {
+            this.opening = opening;
+            this.closing = closing;
+        }
+
+
     }
 }
+
+

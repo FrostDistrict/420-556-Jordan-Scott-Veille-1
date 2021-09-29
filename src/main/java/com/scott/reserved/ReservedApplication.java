@@ -16,7 +16,6 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @EnableMongoRepositories("com.scott.reserved.repository")
-@ComponentScan(value = "com.scott.reserved.*")
 public class ReservedApplication implements CommandLineRunner {
 
     @Autowired

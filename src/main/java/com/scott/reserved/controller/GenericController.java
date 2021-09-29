@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-public class GenericController<T extends BaseEntity, K extends String> {
+public abstract class GenericController<T extends BaseEntity, K extends String> {
 
     private CrudService<T, K> crudService;
 
@@ -48,7 +48,7 @@ public class GenericController<T extends BaseEntity, K extends String> {
                 .build();
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public List<T> getAll(){
         return crudService.getAll();
     }
