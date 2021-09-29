@@ -16,4 +16,13 @@ public class Client extends BaseEntity {
     private String email;
 
     private String phoneNb;
+
+    public Client(String name, String lastName, @Email String email, String phoneNb) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNb = phoneNb;
+    }
+
+    public Client(){}
 }
