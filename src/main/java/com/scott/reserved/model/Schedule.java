@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ToString
+@Data
 public class Schedule {
     Map<String, Day> days = new HashMap<>();
 
@@ -18,6 +19,16 @@ public class Schedule {
     public Day getDay(String day) {
         return days.get(day);
     }
+
+    public LocalTime getOpening(String day) {
+        return days.get(day).getOpening();
+    }
+
+    public LocalTime getClosing(String day) {
+        return days.get(day).getClosing();
+    }
+
+    public Schedule(){}
 
     @ToString
     @Data

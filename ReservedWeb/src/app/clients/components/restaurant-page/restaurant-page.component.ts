@@ -10,8 +10,11 @@ import { RestaurantService } from 'src/app/core/services/restaurant.service';
 export class RestaurantPageComponent implements OnInit {
   restaurant: any | undefined;
   client: any | undefined;
+  selectedDate: any;
+  timeSlots: any[];
 
   reservationForm= this.formBuilder.group({
+    date: [new Date(), Validators.required],
     time: ['', Validators.required],
     amount: ['', Validators.required],
     restaurantId: ['', Validators.required],
@@ -30,6 +33,17 @@ export class RestaurantPageComponent implements OnInit {
 
   getClient(): void{
     this.client = JSON.parse(sessionStorage.getItem("client")!);
+  }
+
+  fetchAvailabilities() {
+    this.restaurantService.getAvailableTimeSlots(this.restaurant.id, this.reservationForm.get("date")?.value).subscribe(
+      (data) => {
+        if(data){
+          this.timeSlots = data;
+          console.log(data);
+        }
+      }
+    );
   }
 
   fetchRestaurant(): void{
