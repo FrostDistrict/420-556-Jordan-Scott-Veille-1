@@ -18,10 +18,15 @@
                     </div>
                 </div>
 
-                <h5>Disponibilitée</h5>
+                <div class="row text-center">
+                    <h5>Disponibilitée</h5>
+                </div>
+
                 <div class="row justify-content-center">
                     <div class="col-md-6 form-group mb-5">
-                        <div *ngFor="let slot of timeSlots" class="time-slot"><a [ngStyle]="{'color': slot.available ? 'blue' : 'red'}">{{slot.time}}</a></div>
+                        <ng-container *ngFor="let slot of timeSlots">
+                            <div class="time-slot"><a (click)="setTime(slot)" [ngStyle]="{'color': slot.available ? 'blue' : 'red'}">{{slot.time}}</a></div>
+                        </ng-container>
                     </div>
                 </div>
 

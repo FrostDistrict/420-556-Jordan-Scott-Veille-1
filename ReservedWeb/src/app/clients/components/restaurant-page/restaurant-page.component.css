@@ -21,4 +21,5 @@
 .time-slot{
     width: 100px;
     display: inline-block;
+    cursor: pointer;
 }

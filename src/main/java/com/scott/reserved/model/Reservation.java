@@ -4,33 +4,34 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Data
 @Document(collection = "reservations")
 public class Reservation extends BaseEntity {
-    @NotBlank
+    @NotNull
     private LocalDate date;
 
-    @NotBlank
-    private LocalTime localTime;
+    @NotNull
+    private LocalTime time;
 
-    @NotBlank
+    @NotNull
     private int amount;
 
     @NotBlank
-    private String restaurantID;
+    private String restaurantId;
 
     @NotBlank
-    private String clientID;
+    private String clientId;
 
-    public Reservation(LocalDate date, LocalTime localTime, int amount, String restaurantID, String clientID) {
+    public Reservation(LocalDate date, LocalTime time, int amount, String restaurantId, String clientId) {
         this.date = date;
-        this.localTime = localTime;
+        this.time = time;
         this.amount = amount;
-        this.restaurantID = restaurantID;
-        this.clientID = clientID;
+        this.restaurantId = restaurantId;
+        this.clientId = clientId;
     }
 
     public Reservation(){}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ReservationService } from 'src/app/core/services/reservation.service';
 import { RestaurantService } from 'src/app/core/services/restaurant.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class RestaurantPageComponent implements OnInit {
 
   constructor(
     private restaurantService: RestaurantService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private reservationService: ReservationService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,13 @@ export class RestaurantPageComponent implements OnInit {
 
   getClient(): void{
     this.client = JSON.parse(sessionStorage.getItem("client")!);
+    this.reservationForm.controls['clientId'].setValue(this.client.id);
+  }
+
+  setTime(slot: any): void{
+    if(slot.available){
+      this.reservationForm.controls['time'].setValue(slot.time);
+    }
   }
 
   fetchAvailabilities() {
@@ -40,7 +49,6 @@ export class RestaurantPageComponent implements OnInit {
       (data) => {
         if(data){
           this.timeSlots = data;
-          console.log(data);
         }
       }
     );
@@ -51,12 +59,21 @@ export class RestaurantPageComponent implements OnInit {
       (data) => {
         if(data) {
           this.restaurant = data;
+          this.reservationForm.controls['restaurantId'].setValue(this.restaurant.id);
         }
       }
     )
   }
 
   submit(): void{
-    
+    console.log("submiting")
+    if(this.reservationForm.valid){
+      console.log(this.reservationForm.value)
+      this.reservationService.save(this.reservationForm.value).subscribe(
+        (data) => {
+          console.log(data);
+        }
+      )
+    }
   }
 }

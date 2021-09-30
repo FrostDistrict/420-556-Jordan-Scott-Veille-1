@@ -20,7 +20,7 @@ public class ReservationService extends CrudService<Reservation, String> {
         setBaseRepository(reservationRepository);
     }
 
-    public List<Reservation> getAllByRestaurantIDAndDay(String restaurantID, LocalDate date) {
-        return reservationRepository.getReservationsByRestaurantIDAndDate(restaurantID, date);
+    public List<Reservation> getAllByRestaurantIdAndDay(String restaurantId, LocalDate date) {
+        return reservationRepository.getReservationsByRestaurantIdAndDate(restaurantId, date);
     }
 }

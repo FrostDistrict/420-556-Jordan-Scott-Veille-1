@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends BaseRepository<Reservation, String> {
 
-    List<Reservation> getReservationsByRestaurantIDAndDate(String restaurantID, LocalDate date);
+    List<Reservation> getReservationsByRestaurantIdAndDate(String restaurantId, LocalDate date);
 }
