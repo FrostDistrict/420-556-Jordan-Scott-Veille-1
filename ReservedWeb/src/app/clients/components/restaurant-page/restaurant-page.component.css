@@ -1,0 +1,18 @@
+.container-fluid{
+    min-height: 100vh;
+    padding: 0;
+}
+
+.header{
+    height: 600px;
+
+    background-image: url("/assets/imgs/restaurant_header.jpg");
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    border-bottom: 2px solid grey;
+}

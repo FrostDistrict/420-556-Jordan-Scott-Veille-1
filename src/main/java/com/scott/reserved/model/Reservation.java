@@ -13,6 +13,9 @@ public class Reservation extends BaseEntity {
     private LocalTime time;
 
     @NotBlank
+    private int amount;
+
+    @NotBlank
     private String restaurantID;
 
     @NotBlank

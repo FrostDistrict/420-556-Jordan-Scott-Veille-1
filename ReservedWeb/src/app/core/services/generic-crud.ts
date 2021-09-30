@@ -17,7 +17,7 @@ export class GenericCrudService<T, K> {
   }
 
   getById(id: K): Observable<T> {
-    return this.http.get<T>(this.url+ "/get"+ id);
+    return this.http.get<T>(this.url+ "/get?id="+ id);
   }
 
   update(id: K, t: T): Observable<T> {

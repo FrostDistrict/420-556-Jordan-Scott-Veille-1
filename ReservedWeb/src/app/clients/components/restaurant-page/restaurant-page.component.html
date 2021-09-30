@@ -1,0 +1,37 @@
+<div *ngIf="restaurant" class="container-fluid">
+    <div class="header">
+        <div class="container text-white">
+            <h1 class="">{{restaurant.name}}</h1>
+            <h5 class="">{{restaurant.description}}</h5>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col">
+            <div class="row title m-5">
+                <h2>Reservez</h2>
+            </div>
+            <form [formGroup]="reservationForm" (ngSubmit)="submit()">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 form-group mb-5">
+                        <label for="time" class="col-form-label">Heure d'arriver</label>
+                        <input type="time" class="form-control" name="time" id="time" formControlName="time">
+                    </div>
+                </div>
+    
+                <div class="row justify-content-center">
+                    <div class="col-md-6 form-group mb-5">
+                        <label for="amount" class="col-form-label">Nombre de personne</label>
+                        <input type="number" class="form-control" name="amount" id="amount" formControlName="amount">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 mb-5">
+                      <input type="submit" value="Reserver" class="btn btn-primary rounded-0 py-2 px-4">
+                      <span class="submitting"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
