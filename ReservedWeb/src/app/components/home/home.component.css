@@ -1,0 +1,44 @@
+.main{
+    min-height: 100vh;
+
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(176,175,199,0.5) 78%);
+}
+
+.card{
+    min-width: 250px;
+    max-width: 450px;
+    height: 500px;
+    margin: auto;
+
+    cursor: pointer;
+    background-color: grey;
+}
+
+.card:hover{
+    border: 5px solid white;
+    height: 505px;
+}
+
+.card-title{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.container{
+    padding-top: 100px;
+}
+
+.client{
+    background-image: url('/assets/imgs/clientLogin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.restaurant{
+    background-image: url('/assets/imgs/restaurantLogin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
