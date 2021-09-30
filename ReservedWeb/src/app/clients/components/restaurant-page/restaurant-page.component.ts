@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ReservationService } from 'src/app/core/services/reservation.service';
 import { RestaurantService } from 'src/app/core/services/restaurant.service';
 
@@ -25,7 +26,8 @@ export class RestaurantPageComponent implements OnInit {
   constructor(
     private restaurantService: RestaurantService,
     private formBuilder: FormBuilder,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +73,7 @@ export class RestaurantPageComponent implements OnInit {
       console.log(this.reservationForm.value)
       this.reservationService.save(this.reservationForm.value).subscribe(
         (data) => {
-          console.log(data);
+          this.router.navigateByUrl('/clients/dashboard');
         }
       )
     }

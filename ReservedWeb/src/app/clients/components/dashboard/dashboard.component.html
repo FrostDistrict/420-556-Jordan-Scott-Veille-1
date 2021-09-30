@@ -1,0 +1,35 @@
+<div class="container-fluid bg-secondary">
+    <div class="container p-5 bg-light main">
+        <div class="row">
+            <div class="col">
+                <img class="profile-img" src="/assets/imgs/user.jpg" alt="">
+            </div>
+            <div class="col profile-name">
+                <h2 class="row">{{client.name}} {{client.lastName}}</h2>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="profile-sub">
+                <h5>Mes Reservation</h5>
+            </div>
+        </div>
+        <ng-container *ngFor="let reservation of reservations">
+            <div class="row reservation-row shadow">
+                <div class="col">
+                    <div class="row">
+                        {{reservation.time}}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        {{reservation.restaurant.name}}
+                    </div>
+                </div>
+                <div class="col">
+                    X
+                </div>
+            </div>
+        </ng-container>
+        
+    </div>
+</div>

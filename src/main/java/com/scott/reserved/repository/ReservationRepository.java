@@ -10,4 +10,6 @@ import java.util.List;
 public interface ReservationRepository extends BaseRepository<Reservation, String> {
 
     List<Reservation> getReservationsByRestaurantIdAndDate(String restaurantId, LocalDate date);
+
+    List<Reservation> getReservationsByClientId(String id);
 }

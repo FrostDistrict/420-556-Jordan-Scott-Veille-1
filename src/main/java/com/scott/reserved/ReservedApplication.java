@@ -45,7 +45,7 @@ public class ReservedApplication implements CommandLineRunner {
         Restaurant rest1 = new Restaurant("Mcdonalds", "Fine cuisine Americaine.", "514-364-4313", "", "info@mcdonalds.com", 20);
         Schedule schedule = new Schedule();
         for (int i=1; i<8; i++){
-            schedule.setOpeningClosingTimes(DayOfWeek.of(i).name(), LocalTime.of(8, 0), LocalTime.of(17, 0));
+            schedule.setOpeningClosingTimes(DayOfWeek.of(i).name(), LocalTime.of(15, 0), LocalTime.of(22, 0));
         }
         rest1.setSchedule(schedule);
 
@@ -60,13 +60,17 @@ public class ReservedApplication implements CommandLineRunner {
         Client cli3 = new Client("toto", "lastname", "toto@mail.com", "514-444-4442");
         Client cli4 = new Client("toto", "lastname", "toto@mail.com", "514-444-4442");
 
-        Reservation reservation1 = new Reservation(LocalDate.now().plusDays(2), LocalTime.now(), 5, "default", "default");
-        Reservation reservation2 = new Reservation(LocalDate.now().plusDays(2), LocalTime.now(), 5, "default", "default");
-        Reservation reservation3 = new Reservation(LocalDate.now().plusDays(2), LocalTime.now(), 5, "default", "default");
-        Reservation reservation4 = new Reservation(LocalDate.now().plusDays(2), LocalTime.now(), 5, "default", "default");
+        Reservation reservation1 = new Reservation(LocalDate.now().plusDays(2), LocalTime.of(18, 0), 5, "default", "default");
+        Reservation reservation2 = new Reservation(LocalDate.now().plusDays(2), LocalTime.of(18, 0), 5, "default", "default");
+        Reservation reservation3 = new Reservation(LocalDate.now().plusDays(2), LocalTime.of(18, 0), 5, "default", "default");
+        Reservation reservation4 = new Reservation(LocalDate.now().plusDays(2), LocalTime.of(18, 0), 5, "default", "default");
 
         cli1.setId("default");
         rest1.setId("default");
+
+        reservationRepository.deleteAll();
+        clientRepository.deleteAll();
+        restaurantRepository.deleteAll();
 
         reservationRepository.saveAll(Arrays.asList(reservation1, reservation2, reservation3, reservation4));
         clientRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4));
